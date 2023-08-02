@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Online Payment Website</title>
+    <style>
+        /* Add your CSS styling here */
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to Our Online Payment Portal</h1>
+    </header>
+
+    <main>
+        <section class="payment-form">
+            <h2>Make a Payment</h2>
+            <form id="paymentForm">
+                <label for="amount">Amount:</label>
+                <input type="number" id="amount" required>
+                <label for="cardNumber">Card Number:</label>
+                <input type="text" id="cardNumber" required>
+                <label for="expiryDate">Expiry Date:</label>
+                <input type="text" id="expiryDate" required>
+                <label for="cvv">CVV:</label>
+                <input type="text" id="cvv" required>
+                <button type="submit">Pay Now</button>
+            </form>
+        </section>
+
+        <section class="payment-history">
+            <h2>Payment History</h2>
+            <ul id="paymentList">
+                <!-- Payment history items will be dynamically added here -->
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Your Online Payment Website</p>
+    </footer>
+
+    <script>
+        const paymentForm = document.getElementById('paymentForm');
+        const paymentList = document.getElementById('paymentList');
+
+        paymentForm.addEventListener('submit', handlePayment);
+
+        function handlePayment(event) {
+            event.preventDefault();
+
+            const amount = document.getElementById('amount').value;
+            const cardNumber = document.getElementById('cardNumber').value;
+            const expiryDate = document.getElementById('expiryDate').value;
+            const cvv = document.getElementById('cvv').value;
+
+            // Here, you would typically make an API call to your backend server
+            // to process the payment and record the payment history.
+            // For demonstration purposes, we'll just add a payment history item.
+            const paymentItem = document.createElement('li');
+            paymentItem.textContent = `Paid $${amount} with card ending in ${cardNumber.slice(-4)}`;
+            paymentList.appendChild(paymentItem);
+
+            // Clear form fields after payment
+            paymentForm.reset();
+        }
+    </script>
+</body>
+</html>
